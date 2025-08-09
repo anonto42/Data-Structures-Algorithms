@@ -73,6 +73,38 @@ public class CustomArray
         return restult;
     }
 
+    public CustomArray reverse()
+    {
+        CustomArray tempArr = new CustomArray(this.currentIndex);
+        int tempIndex = this.currentIndex - 1;
+
+        for ( int index = 0; index < this.currentIndex; index++ )
+        {
+            if( tempIndex <= 0 ) break;
+
+            tempArr.insert( this.arr[tempIndex] );
+            tempIndex--;
+
+        }
+
+        return tempArr;
+    }
+
+    public void optimizeReverse()
+    {
+        int i = 0;
+        int j = this.currentIndex - 1;
+
+        while( i < j )
+        {
+            int temp = this.arr[i];
+            this.arr[i] = this.arr[j];
+            this.arr[j] = temp;
+            i++;
+            j--;
+        }
+    }
+
     public String toString() 
     {
         StringBuilder str = new StringBuilder();
