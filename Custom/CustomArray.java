@@ -1,0 +1,92 @@
+package Custom;
+
+public class CustomArray 
+{
+    private int[] arr;
+    private int currentIndex;
+
+    public CustomArray(int size) 
+    {
+        this.arr = new int[size];
+        this.currentIndex = 0;
+    }
+
+    public void insert(int value) 
+    {
+        this.arr[currentIndex] = value;
+        this.currentIndex++;
+    }
+
+    public int indexOf( int value )
+    {
+        for( int i = 0; i < this.currentIndex; i++ )
+        {
+            if( this.arr[i] == value )
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public void removeAt ( int index )
+    {
+        if (index > this.currentIndex - 1) throw new IllegalArgumentException();
+
+        for( int i = index; i < this.currentIndex - 1; i++ )
+        {
+            this.arr[i] = this.arr[i + 1];
+        }
+
+        this.arr[this.currentIndex - 1] = 0;
+        this.currentIndex--;
+    }
+
+    public int max()
+    {
+        int restult = this.arr[0];
+
+        for ( int i = 1; i < this.currentIndex; i++ )
+        {
+            if( this.arr[i] > restult )
+            {
+                restult = this.arr[i];
+            }
+        }
+
+        return restult;
+    }
+
+    public int min()
+    {
+        int restult = this.arr[0];
+
+        for( int i = 0; i < this.currentIndex; i++)
+        {
+            if( this.arr[i] < restult )
+            {
+                restult = this.arr[i];
+            }
+        }
+
+        return restult;
+    }
+
+    public String toString() 
+    {
+        StringBuilder str = new StringBuilder();
+
+        str.append('[');
+
+        for (int i = 0; i < this.currentIndex; i++)
+        {
+            str.append(this.arr[i]).append(", ");
+        }
+
+        str.append('\b').append('\b').append(']');
+        
+        return str.toString();
+    }
+
+}
