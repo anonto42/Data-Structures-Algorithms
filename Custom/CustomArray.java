@@ -13,6 +13,17 @@ public class CustomArray
 
     public void insert(int value) 
     {
+        if( currentIndex == arr.length ){
+            
+            int[] tempArr = new int[arr.length * 2];
+
+            for(int i = 0; i < currentIndex; i++){
+                tempArr[i] = arr[i];
+            }
+
+            arr = tempArr;
+        }
+
         this.arr[currentIndex] = value;
         this.currentIndex++;
     }
